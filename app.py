@@ -100,7 +100,7 @@ def build_pipeline(repo_url, cohere_api_key):
         st.error(f"Could not download repo from {owner_repo}. Check the URL is correct and the repo is public.")
         st.stop()
 
-    ...
+
 
     # extract
     with zipfile.ZipFile(zip_path, "r") as zf:
@@ -225,7 +225,7 @@ else:
             with st.spinner("Thinking..."):
            
                 response = st.session_state.qa_chain.invoke({"query": user_question})
-                st.write("RAW ANSWER (debug):", repr(response["result"]))  # TEMP
+              
                 answer = response["result"]
                 sources = sorted(set(doc.metadata["source"] for doc in response["source_documents"]))
                 st.write(answer)
